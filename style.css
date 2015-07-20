@@ -1,0 +1,18 @@
+body {
+    width: 100%;
+    margin: 0;
+    font-size: 12pt;
+    position: relative;
+}
+
+html {
+    box-sizing: border-box;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+img {
+    border-width: 0;
+}
