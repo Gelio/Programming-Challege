@@ -26,6 +26,10 @@ a:hover {
     color: #9e789e;
 }
 
+.bold {
+    font-weight: bold;
+}
+
 /* Universal use */
 /* Float-clearing div */
 div.clear {
@@ -158,7 +162,7 @@ div.clear {
 #cash {
     margin-bottom: 10px;
     width: 100%;
-    
+
     text-align: center;
 
     font-size: 2em;
@@ -166,11 +170,26 @@ div.clear {
     font-weight: bold;
 }
 
-#progressBar {
+/* -------------------------------------------------------------------------------- */
+/* Small project */
+#smallProjectTitle {
+    width: 100%;
+    text-align: center;
+    font-size: 2em;
+    margin-bottom: 5px;
+    border-top: solid 1px;
+}
+
+#rewardAndProgressBar {
+    margin: auto;
+}
+
+#smallProjectProgressBar {
     position: relative;
 
     width: 70%;
     margin: auto;
+    float: left;
     padding: 3px;
     text-align: center;
 
@@ -180,7 +199,7 @@ div.clear {
     font-size: 2em;
 }
 
-#progressBarBackground {
+#smallProjectProgressBarBackground {
     background-color: green;
     width: 0;
     height: 100%;
@@ -191,18 +210,42 @@ div.clear {
     z-index: 0;
 }
 
-#progressBarLabel {
+#smallProjectProgressBarLabel {
     position: relative;
     z-index: 1;
 }
 
-#workButtonSection {
+#smallProjectReward {
+    float: right;
+    text-align: right;
+    width: 25%;
+    line-height: 49px;
+    font-size: 2em;
+}
+
+#smallProjectProgressAmount {
+    width: 100%;
+    float: left;
+    text-align: center;
+    font-size: 1.2em;
+    margin-top: 5px;
+}
+
+#smallProjectProgressAmount .currentAmount {
+
+}
+
+#smallProjectProgressAmount .totalAmount {
+
+}
+
+#smallProjectWorkButtonSection {
     width: 100%;
     text-align: center;
     margin-top: 10px;
 }
 
-#workButton {
+#smallProjectWorkButton {
     width: 50%;
 }
 
@@ -213,4 +256,10 @@ footer {
     margin-top: 10px;
     text-align: center;
     font-size: 0.8em;
+}
+
+
+/* -------------------------------------------------------------------------------- */
+audio {
+    display: none;
 }
