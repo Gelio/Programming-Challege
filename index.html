@@ -26,10 +26,116 @@
 
     <!-- Javascript -->
     <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
-    <script type="text/javascript" src=""></script>
+    <script type="text/javascript" src="script.js"></script>
 </head>
 <body>
+<header id="gameLogo">
+    <h1>Programming Challenge</h1>
+</header>
 
+<section id="achievements" class="sidePanel">
+    <header class="panelTitle">
+        Achievements
+    </header>
+
+    <div id="achievementTiles">
+        <div class="achievementTile">
+
+        </div>
+
+        <div class="achievementTile">
+
+        </div>
+
+        <div class="achievementTile">
+
+        </div>
+
+        <div class="achievementTile">
+
+        </div>
+
+        <div class="achievementTile">
+
+        </div>
+
+        <div class="achievementTile">
+
+        </div>
+
+        <div class="achievementTile">
+
+        </div>
+    </div>
+</section>
+
+<section id="upgrades" class="sidePanel">
+    <header class="panelTitle">
+        Upgrades
+    </header>
+
+    <div id="upgradesList">
+        <div class="upgrade">
+            <div class="cost">
+                $5
+            </div>
+
+            <div class="name">
+                Training
+            </div>
+
+            <div class="effect">
+                +2 pts/click
+            </div>
+        </div>
+
+        <div class="upgrade">
+            <div class="cost">
+                $10
+            </div>
+
+            <div class="name">
+                Programming course
+            </div>
+
+            <div class="effect">
+                +4 pts/click
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="gamePanel">
+    <header class="panelTitle">
+        Projects
+    </header>
+
+    <section id="cash">
+        $6969
+    </section>
+
+    <section id="smallProject">
+        <section id="projectInfo">
+            <!-- Przebudować to! + dodać kasę za projekt (nagrodę po prawej od progress baru) -->
+            <section id="progressBar">
+                <div id="progressBarBackground"></div>
+                <div id="progressBarLabel">0%</div>
+            </section>
+
+            <div id="progressAmountNumber">
+                0/50
+            </div>
+        </section>
+
+        <section id="workButtonSection">
+            <img src="images/keyboard.png" alt="Work" id="workButton">
+        </section>
+    </section>
+</section>
+
+<div class="clear"></div>
+
+<footer>Created by <a href="mailto:voreny.gelio@gmail.com">Grzegorz Rozdzialik</a> & Kinga Wołącewicz. Copyright @ 2015</footer>
 
 </body>
 </html>
