@@ -39,33 +39,7 @@
     </header>
 
     <div id="achievementTiles">
-        <div class="achievementTile">
-
-        </div>
-
-        <div class="achievementTile">
-
-        </div>
-
-        <div class="achievementTile">
-
-        </div>
-
-        <div class="achievementTile">
-
-        </div>
-
-        <div class="achievementTile">
-
-        </div>
-
-        <div class="achievementTile">
-
-        </div>
-
-        <div class="achievementTile">
-
-        </div>
+        <!-- Updated by Javascript -->
     </div>
 </section>
 
@@ -88,15 +62,19 @@
         $0
     </section>
 
+    <section id="powerInfo">
+        <span id="clickPower">0</span> pts/click | <span id="idlePower">0</span> pts/sec
+    </section>
+
     <section id="smallProject">
         <section id="smallProjectInfo">
             <header id="smallProjectTitle">
-                Title
+                Small project title
             </header>
             <div id="rewardAndProgressBar">
                 <section id="smallProjectProgressBar">
-                    <div id="smallProjectProgressBarBackground"></div>
-                    <div id="smallProjectProgressBarLabel">0%</div>
+                    <div id="smallProjectProgressBarBackground" class="progressBarBackground"></div>
+                    <div id="smallProjectProgressBarLabel" class="progressBarLabel">0%</div>
                 </section>
 
                 <div id="smallProjectReward">
@@ -116,6 +94,67 @@
         <section id="smallProjectWorkButtonSection">
             <img src="images/keyboard.png" alt="Work" id="smallProjectWorkButton">
         </section>
+    </section>
+
+    <section id="bigProject">
+        <header id="bigProjectTitle">
+            Big project title
+        </header>
+
+        <div id="bigProjectReward">
+            $0
+        </div>
+
+        <div class="clear"></div>
+
+        <div id="bigProjectMainProgressBar">
+            <div id="bigProjectMainProgressBarBackground" class="progressBarBackground"></div>
+            <div id="bigProjectMainProgressBarLabel" class="progressBarLabel">0%</div>
+        </div>
+
+        <div id="bigProjectGoals">
+            <div class="projectGoal">
+                <div class="goalBarAndAmount">
+                    <div class="projectGoalBar blue">
+                        <div class="progressBarBackground"></div>
+                        <div class="progressBarLabel">0%</div>
+                    </div>
+
+                    <div class="projectGoalAmount">
+                        <span class="currentAmount">0</span>
+                        /
+                        <span class="totalAmount">0</span>
+                    </div>
+                </div>
+
+                <div class="goalButton">
+                    <img src="images/keyboard.png" alt="Work">
+                </div>
+
+                <div class="clear"></div>
+            </div>
+
+            <div class="projectGoal">
+                <div class="goalBarAndAmount">
+                    <div class="projectGoalBar red">
+                        <div class="progressBarBackground"></div>
+                        <div class="progressBarLabel">0%</div>
+                    </div>
+
+                    <div class="projectGoalAmount">
+                        <span class="currentAmount">0</span>
+                        /
+                        <span class="totalAmount">0</span>
+                    </div>
+                </div>
+
+                <div class="goalButton">
+                    <img src="images/keyboard.png" alt="Work">
+                </div>
+
+                <div class="clear"></div>
+            </div>
+        </div>
     </section>
 </section>
 
