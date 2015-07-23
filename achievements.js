@@ -14,15 +14,42 @@ var achievementsList = [
         type: "projectsCompleted",
         goal: 5,
         completed: false
+    },
+    {
+        id: "achievement5Ppc",
+        name: "5 pts/click",
+        image: "five.png",
+        type: "pointsPerClick",
+        goal: 5,
+        completed: false
+    },
+    {
+        id: "achievement5Pps",
+        name: "5 pts/sec",
+        image: "five.png",
+        type: "pointsPerSec",
+        goal: 5,
+        completed: false
+    },
+    {
+        id: "achievement5BigProject",
+        name: "5 big projects",
+        image: "five.png",
+        type: "bigProjectsCompleted",
+        goal: 5,
+        completed: false
     }
 ];
 
 var achievementsAmount = achievementsList.length;
 
-// TODO: types: bigProjectsCompleted, pts/click, pts/sec
+// TODO: types: pts/click, pts/sec
 var achievementsTypes = {
     projectsCompleted: [],
-    totalCash: []
+    bigProjectsCompleted: [],
+    totalCash: [],
+    pointsPerClick: [],
+    pointsPerSec: []
 };
 
 var Achievements = {
@@ -73,8 +100,20 @@ var Achievements = {
                     achievementsTypes.projectsCompleted[achievementsTypes.projectsCompleted.length] = achievementsList[i].id;
                     break;
 
+                case "bigProjectsCompleted":
+                    achievementsTypes.bigProjectsCompleted[achievementsTypes.bigProjectsCompleted.length] = achievementsList[i].id;
+                    break;
+
                 case "totalCash":
                     achievementsTypes.totalCash[achievementsTypes.totalCash.length] = achievementsList[i].id;
+                    break;
+
+                case "pointsPerClick":
+                    achievementsTypes.pointsPerClick[achievementsTypes.pointsPerClick.length] = achievementsList[i].id;
+                    break;
+
+                case "pointsPerSec":
+                    achievementsTypes.pointsPerSec[achievementsTypes.pointsPerSec.length] = achievementsList[i].id;
                     break;
 
                 default:
@@ -106,12 +145,34 @@ var Achievements = {
                 $(achievementTile).children("div.achievementDescription").html("<span class=\"achievementTitle\">" + achievementsList[i].name + "</span>" + valueToInsert + " / " + achievementsList[i].goal + " projects completed");
                 break;
 
+            case "bigProjectsCompleted":
+                if(!achievementsList[i].completed)
+                    valueToInsert = Player.bigProjectsCompleted;
+
+                $(achievementTile).children("div.achievementDescription").html("<span class=\"achievementTitle\">" + achievementsList[i].name + "</span>" + valueToInsert + " / " + achievementsList[i].goal + " big projects completed");
+                break;
+
             case "totalCash":
                 if(!achievementsList[i].completed)
                     valueToInsert = cash;
 
                 $(achievementTile).children("div.achievementDescription").html("<span class=\"achievementTitle\">" + achievementsList[i].name + "</span>" + valueToInsert + " / " + achievementsList[i].goal + " cash");
                 break;
+
+            case "pointsPerClick":
+                if(!achievementsList[i].completed)
+                    valueToInsert = Player.clickPower;
+
+                $(achievementTile).children("div.achievementDescription").html("<span class=\"achievementTitle\">" + achievementsList[i].name + "</span>" + valueToInsert + " / " + achievementsList[i].goal + " pts/click");
+                break;
+
+            case "pointsPerSec":
+                if(!achievementsList[i].completed)
+                    valueToInsert = Player.idlePower;
+
+                $(achievementTile).children("div.achievementDescription").html("<span class=\"achievementTitle\">" + achievementsList[i].name + "</span>" + valueToInsert + " / " + achievementsList[i].goal + " pts/sec");
+                break;
+
 
             default:
                 // Unknown type
@@ -151,6 +212,25 @@ var Achievements = {
                 }
                 break;
 
+            case "bigProjectsCompleted":
+                for(var i=0; i < achievementsTypes.bigProjectsCompleted.length; ++i)
+                {
+                    var achievementNumber = 0;
+                    for( ; achievementNumber < achievementsAmount; ++achievementNumber)
+                    {
+                        if(achievementsList[achievementNumber].id == achievementsTypes.bigProjectsCompleted[i])
+                            break;
+                    }
+
+                    if(!achievementsList[achievementNumber].completed)
+                    {
+                        if(Player.bigProjectsCompleted >= achievementsList[achievementNumber].goal)
+                            achievementsList[achievementNumber].completed = true;
+                    }
+                    this.updateAchievementById(achievementsList[achievementNumber].id);
+                }
+                break;
+
             case "totalCash":
                 for(var i=0; i < achievementsTypes.totalCash.length; ++i)
                 {
@@ -164,6 +244,44 @@ var Achievements = {
                     if(!achievementsList[achievementNumber].completed)
                     {
                         if(cash >= achievementsList[achievementNumber].goal)
+                            achievementsList[achievementNumber].completed = true;
+                    }
+                    this.updateAchievementById(achievementsList[achievementNumber].id);
+                }
+                break;
+
+            case "pointsPerClick":
+                for(var i=0; i < achievementsTypes.pointsPerClick.length; ++i)
+                {
+                    var achievementNumber = 0;
+                    for( ; achievementNumber < achievementsAmount; ++achievementNumber)
+                    {
+                        if(achievementsList[achievementNumber].id == achievementsTypes.pointsPerClick[i])
+                            break;
+                    }
+
+                    if(!achievementsList[achievementNumber].completed)
+                    {
+                        if(Player.clickPower >= achievementsList[achievementNumber].goal)
+                            achievementsList[achievementNumber].completed = true;
+                    }
+                    this.updateAchievementById(achievementsList[achievementNumber].id);
+                }
+                break;
+
+            case "pointsPerSec":
+                for(var i=0; i < achievementsTypes.pointsPerSec.length; ++i)
+                {
+                    var achievementNumber = 0;
+                    for( ; achievementNumber < achievementsAmount; ++achievementNumber)
+                    {
+                        if(achievementsList[achievementNumber].id == achievementsTypes.pointsPerSec[i])
+                            break;
+                    }
+
+                    if(!achievementsList[achievementNumber].completed)
+                    {
+                        if(Player.idlePower >= achievementsList[achievementNumber].goal)
                             achievementsList[achievementNumber].completed = true;
                     }
                     this.updateAchievementById(achievementsList[achievementNumber].id);

@@ -64,7 +64,6 @@ var SmallProject = {
         {
             // Project is finished
             ++Player.projectsCompleted;
-            console.log(Player.projectsCompleted + " projects completed");
             Achievements.checkAchievementsType("projectsCompleted");
 
             cash += this.reward;

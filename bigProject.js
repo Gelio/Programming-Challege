@@ -61,22 +61,53 @@ var BigProject = {
     },
 
     getRandomReward: function() {
-        return randomInteger(Player.level*5, Player.level*10);
+        return Player.level*randomInteger(10, 20);
     },
 
     shuffle: function() {
+        this.title = bigProjectTitles[randomInteger(0, bigProjectTitlesAmount-1)];
         this.reward = this.getRandomReward();
         var goals = randomInteger(2, 3);
         for(var i=0; i < goals; ++i)
         {
             var newGoal = new BigProjectGoal();
             newGoal.id = "goal-"+i;
-            newGoal.totalAmount = 5;
+            newGoal.totalAmount = newGoal.getRandomTarget();
             newGoal.color = possibleColors[randomInteger(0, possibleColors.length-1)];
             newGoal.createGoal();
         }
 
         this.updateAll();
+    },
+
+    idleGain: function() {
+        //console.log("idle gain");
+        var totalIdleGain = Player.idlePower;
+        if(totalIdleGain == 0)
+            return;
+
+        var incompleteGoals = [];
+        for(var i=0; i < BigProject.goals.length; ++i)
+        {
+            if(!BigProject.goals[i].completed)
+                incompleteGoals[incompleteGoals.length] = BigProject.goals[i];
+        }
+        if(incompleteGoals.length == 0)
+            return;
+
+        //console.log(totalIdleGain + " to be split between " + incompleteGoals.length + " goals");
+
+        var currGoal = 0, percentage = 0, toGive = 0;
+        while(totalIdleGain > 0)
+        {
+            percentage = Math.round(randomInteger(0, 100))/100;
+            toGive = Math.round(totalIdleGain*percentage);
+            totalIdleGain -= toGive;
+            incompleteGoals[currGoal].addProgress(toGive);
+            currGoal = (currGoal+1)%incompleteGoals.length;
+        }
+
+        BigProject.updateProgress();
     }
 };
 
@@ -120,7 +151,7 @@ function BigProjectGoal() {
     };
 
     this.destroyGoal = function() {
-        console.log("destroy #"+this.id);
+        //console.log("destroy #"+this.id);
         $("#"+this.id).remove();
     };
 
@@ -169,6 +200,7 @@ function BigProjectGoal() {
 
         var clear = document.createElement("div");
         $(clear).addClass("clear");
+        $(clear).addClass("left");
 
         $(goal).append(clear);
 
@@ -177,6 +209,10 @@ function BigProjectGoal() {
         BigProject.goals[BigProject.goals.length] = this;
 
         this.update();
+    };
+
+    this.getRandomTarget = function() {
+        return Player.level*randomInteger(5, 10);
     }
 }
 

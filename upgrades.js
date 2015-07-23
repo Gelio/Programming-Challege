@@ -38,6 +38,66 @@ var upgradesList = [
         idleGain: 1,
         level: 0,
         playerLevelIncrease: 1
+    },
+    {
+        id: "upgrade-freelancer",
+        name: "Freelancer",
+        cost: 100,
+        costMultiplier: 1.3,
+        clickGain: 0,
+        idleGain: 3,
+        level: 0,
+        playerLevelIncrease: 5
+    },
+    {
+        id: "upgrade-highschooler",
+        name: "High-schooler",
+        cost: 200,
+        costMultiplier: 1.3,
+        clickGain: 0,
+        idleGain: 7,
+        level: 0,
+        playerLevelIncrease: 10
+    },
+    {
+        id: "upgrade-college-student",
+        name: "College student",
+        cost: 500,
+        costMultiplier: 1.3,
+        clickGain: 0,
+        idleGain: 15,
+        level: 0,
+        playerLevelIncrease: 25
+    },
+    {
+        id: "upgrade-college-graduate",
+        name: "Graduate",
+        cost: 1000,
+        costMultiplier: 1.3,
+        clickGain: 0,
+        idleGain: 20,
+        level: 0,
+        playerLevelIncrease: 40
+    },
+    {
+        id: "upgrade-programmer",
+        name: "Programmer",
+        cost: 1500,
+        costMultiplier: 1.3,
+        clickGain: 0,
+        idleGain: 40,
+        level: 0,
+        playerLevelIncrease: 70
+    },
+    {
+        id: "upgrade-experienced",
+        name: "Experienced programmer",
+        cost: 10000,
+        costMultiplier: 1.3,
+        clickGain: 0,
+        idleGain: 100,
+        level: 0,
+        playerLevelIncrease: 150
     }
 ];
 
@@ -80,7 +140,6 @@ var Upgrades = {
     updateUpgrade: function(upgradeNumber) {
         var upgrade = document.getElementById(upgradesList[upgradeNumber].id), upgradeChildren = upgrade.childNodes;
 
-        console.log(upgradesList[upgradeNumber].cost);
         // Cost
         $(upgradeChildren[0]).text("$" + upgradesList[upgradeNumber].cost);
 
@@ -97,7 +156,7 @@ var Upgrades = {
 
     updateAll: function() {
         for(var i=0; i < upgradesAmount; ++i)
-            this.updateUpgrade(upgradesList[i].id);
+            this.updateUpgrade(i);
     },
 
     clickUpgrade: function() {
@@ -115,7 +174,11 @@ var Upgrades = {
         {
             // Can afford
             Player.clickPower += upgradesList[upgradeNumber].clickGain;
+            Achievements.checkAchievementsType("pointsPerClick");
+
             Player.idlePower += upgradesList[upgradeNumber].idleGain;
+            Achievements.checkAchievementsType("pointsPerSec");
+
             updatePower();
 
             Player.level += upgradesList[upgradeNumber].playerLevelIncrease;

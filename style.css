@@ -36,6 +36,14 @@ div.clear {
     clear: both;
 }
 
+div.clear.left {
+    clear: left;
+}
+
+div.clear.right {
+    clear: right;
+}
+
 
 
 /* -------------------------------------------------------------------------------- */
@@ -131,6 +139,11 @@ div.clear {
     display: block;
 }
 
+#settings {
+    text-align: center;
+    margin-top: 20px;
+}
+
 
 
 
@@ -170,7 +183,7 @@ div.clear {
 
 .cost {
     float: left;
-    width: 10%;
+    width: 20%;
     color: #1ea31d;
 }
 
@@ -182,7 +195,7 @@ div.clear {
 
 .effect {
     float: right;
-    width: 45%;
+    width: 35%;
     margin-left: 5%;
     color: darkred;
 }
@@ -307,11 +320,11 @@ div.clear {
     width: 100%;
     text-align: center;
     margin-top: 10px;
-    cursor: pointer;
 }
 
 #smallProjectWorkButton {
     width: 50%;
+    cursor: pointer;
 }
 
 
