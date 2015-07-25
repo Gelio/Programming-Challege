@@ -13,9 +13,9 @@ var Player = {
 };
 
 var soundsEnabled = true;
+var achievementsShown = true, upgradesShown = true;
 
 var cash = 0;
-
 
 function updateCash()
 {
@@ -52,12 +52,6 @@ function saveGame()
 
 function loadGame()
 {
-    console.log("loading...");
-    /*var data = prompt("Paste the code here");
-    if(!data)
-        return;
-    */
-
     var data = Cookies.get("progChallengeData");
     if(data == undefined)
         return;
@@ -80,6 +74,7 @@ function loadGame()
 
     for(var i=0; i < BigProject.goals.length; ++i)
         BigProject.goals[i].destroyGoal();
+    BigProject.goals = [];
     BigProject.title = loadInfo.BigProject.title;
     BigProject.reward = loadInfo.BigProject.reward;
     for(var i=0; i < loadInfo.BigProject.goals.length; ++i)
@@ -102,22 +97,88 @@ function loadGame()
 
     cash = loadInfo.cash;
     updateCash();
+}
 
+function autosave()
+{
+    $("#autosaving").fadeIn();
+    saveGame();
+    window.setTimeout(function(){$("#autosaving").fadeOut()}, 3000);
 }
 
 function clickSoundButton()
 {
     soundsEnabled = !soundsEnabled;
 
+    updateSoundButtonText();
+}
+
+function updateSoundButtonText()
+{
+    var soundImg = $("#soundSetting").find("img");
+    console.log(soundsEnabled);
     if(soundsEnabled)
-        $("#soundSetting").text("Sound off");
+    {
+        soundImg.attr("src", "images/speaker.png");
+        soundImg.attr("alt", "Sound on");
+    }
     else
-        $("#soundSetting").text("Sound on");
+    {
+        soundImg.attr("src", "images/speaker-off.png");
+        soundImg.attr("alt", "Sound off");
+    }
 }
 
 function randomInteger(min, max)
 {
     return Math.floor(Math.random()*(max-min+1)+min);
+}
+
+function updatePanels(slide)
+{
+    var achievPanel = $("#achievements").find(".panelTitle");
+    if(!achievementsShown)
+    {
+        var arrow = achievPanel.find(".arrow-down");
+        arrow.removeClass("arrow-down");
+        arrow.addClass("arrow-left");
+        if(slide)
+            $("#achievementTiles").slideUp();
+        else
+            $("#achievementTiles").hide();
+    }
+    else
+    {
+        var arrow = achievPanel.find(".arrow-left");
+        arrow.removeClass("arrow-left");
+        arrow.addClass("arrow-down");
+        if(slide)
+            $("#achievementTiles").slideDown();
+        else
+            $("#achievementTiles").show();
+    }
+
+    var upgradesPanel = $("#upgrades").find(".panelTitle");
+    if(!upgradesShown)
+    {
+        var arrow = upgradesPanel.find(".arrow-down");
+        arrow.removeClass("arrow-down");
+        arrow.addClass("arrow-left");
+        if(slide)
+            $("#upgradesList").slideUp();
+        else
+            $("#upgradesList").hide();
+    }
+    else
+    {
+        var arrow = upgradesPanel.find(".arrow-left");
+        arrow.removeClass("arrow-left");
+        arrow.addClass("arrow-down");
+        if(slide)
+            $("#upgradesList").slideDown();
+        else
+            $("#upgradesList").show();
+    }
 }
 
 function init()
@@ -139,7 +200,20 @@ function init()
 
     $("#smallProjectWorkButton").click(SmallProject.buttonClick);
 
-
+    $("#achievements").find(".panelTitle").click(function (){
+        achievementsShown = !achievementsShown;
+        updatePanels(true);
+    });
+    $("#upgrades").find(".panelTitle").click(function (){
+        upgradesShown = !upgradesShown;
+        updatePanels(true);
+    });
+    if(window.innerWidth < 800)
+    {
+        achievementsShown = false;
+        upgradesShown = false;
+    }
+    updatePanels(false);
 
     updateCash();
     updatePower();
@@ -147,7 +221,7 @@ function init()
 
     BigProject.shuffle();
     window.setInterval(BigProject.idleGain, 1000);
-    window.setInterval(saveGame, autosaveTime*1000);
+    window.setInterval(autosave, autosaveTime*1000);
 }
 
 window.onload = init;

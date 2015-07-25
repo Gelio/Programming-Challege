@@ -1,0 +1,28 @@
+@media screen and (max-width: 799px) {
+    body {
+        font-size: 10pt;
+    }
+
+    #gameLogo h1 {
+        width: 70%;
+        font-size: 1.8em;
+    }
+    #achievements, #upgrades, #gamePanel {
+        width: 100%;
+    }
+
+    #achievements {
+        right: auto;
+    }
+
+    #gamePanel {
+        left: auto;
+    }
+
+    .panelTitle {
+
+    }
+
+
+
+}

@@ -23,6 +23,7 @@
 
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="phones.css">
 
     <!-- Javascript -->
     <!-- Libraries -->
@@ -40,34 +41,6 @@
 <header id="gameLogo">
     <h1>Programming Challenge</h1>
 </header>
-
-<section id="achievements" class="sidePanel">
-    <header class="panelTitle">
-        Achievements
-    </header>
-
-    <div id="achievementTiles">
-        <!-- Updated by Javascript -->
-    </div>
-
-    <div class="clear"></div>
-
-    <div id="settings">
-        <button id="saveButton">Save</button>
-        <button id="loadButton">Load</button>
-        <button id="soundSetting">Sound off</button>
-    </div>
-</section>
-
-<section id="upgrades" class="sidePanel">
-    <header class="panelTitle">
-        Upgrades
-    </header>
-
-    <div id="upgradesList">
-        <!-- Updated by Javascript -->
-    </div>
-</section>
 
 <section id="gamePanel">
     <header class="panelTitle">
@@ -154,6 +127,35 @@
             -->
         </div>
     </section>
+</section>
+
+<section id="upgrades" class="sidePanel">
+    <header class="panelTitle">
+        Upgrades <div class="arrow-down"></div>
+    </header>
+
+    <div id="upgradesList">
+        <!-- Updated by Javascript -->
+    </div>
+</section>
+
+<section id="achievements" class="sidePanel">
+    <header class="panelTitle">
+        Achievements <div class="arrow-down"></div>
+    </header>
+
+    <div id="achievementTiles">
+        <!-- Updated by Javascript -->
+    </div>
+
+    <div class="clear"></div>
+
+    <div id="settings">
+        <button id="saveButton">Save</button>
+        <button id="loadButton">Load</button>
+        <button id="soundSetting"><img src="images/speaker.png" alt="Sound on"></button>
+        <div id="autosaving">Autosaving...</div>
+    </div>
 </section>
 
 <div class="clear"></div>
