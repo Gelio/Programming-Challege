@@ -341,8 +341,8 @@ var Achievements = {
         $(this).children("div.achievementDescription").hide();
     },
 
-    adjustDescription: function() {
-        $(this).children("div.achievementDescription").css("left", event.pageX+15);
-        $(this).children("div.achievementDescription").css("top", event.pageY);
+    adjustDescription: function(event) {
+        $(this).children("div.achievementDescription").css("left", event.clientX+0.01*window.innerWidth);
+        $(this).children("div.achievementDescription").css("top", event.clientY);
     }
 };
