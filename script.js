@@ -3,7 +3,7 @@ Author: Grzegorz Rozdzialik <voreny.gelio@gmail.com>
 Configuration
 TODO: add colors to big project, more achievements, balance upgrades, rewards, targets
  */
-var autosaveTime = 60; // seconds between autosave
+var autosaveTime = 5; // seconds between autosave
 var Player = {
     clickPower: 1,
     idlePower: 0,
@@ -115,6 +115,9 @@ function loadGame()
 
 function autosave()
 {
+    if(!$("#autosave").prop("checked"))
+        return;
+
     $("#autosaving").fadeIn();
     saveGame();
     window.setTimeout(function(){$("#autosaving").fadeOut()}, 3000);
@@ -256,6 +259,9 @@ function init()
     BigProject.shuffle();
     window.setInterval(BigProject.idleGain, 1000);
     window.setInterval(autosave, autosaveTime*1000);
+
+    if(Cookies.get("progChallengeData") !== undefined)
+        $("#autosave").prop("checked", false);
 }
 
 window.onload = init;
