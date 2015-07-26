@@ -48,7 +48,11 @@ var BigProject = {
             this.goals = [];
 
             if(soundsEnabled)
-                document.getElementById("cash_in").play();
+            {
+                console.log("play big");
+                //document.getElementById("cash_in").play();
+                playCashSound();
+            }
 
             this.shuffle();
         }

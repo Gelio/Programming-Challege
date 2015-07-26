@@ -20,6 +20,15 @@ var cash = 0;
 function updateCash()
 {
     $("#cash").text("$"+cash);
+    Upgrades.updateAll();
+}
+
+function canAfford(price)
+{
+    if(cash >= price)
+        return true;
+    else
+        return false;
 }
 
 function updatePower()
@@ -110,22 +119,21 @@ function clickSoundButton()
 {
     soundsEnabled = !soundsEnabled;
 
-    updateSoundButtonText();
+    updateSoundButton();
 }
 
-function updateSoundButtonText()
+function updateSoundButton()
 {
-    var soundImg = $("#soundSetting").find("img");
-    console.log(soundsEnabled);
+    //console.log(soundsEnabled);
     if(soundsEnabled)
     {
-        soundImg.attr("src", "images/speaker.png");
-        soundImg.attr("alt", "Sound on");
+        $("#soundOn").show();
+        $("#soundOff").hide();
     }
     else
     {
-        soundImg.attr("src", "images/speaker-off.png");
-        soundImg.attr("alt", "Sound off");
+        $("#soundOff").show();
+        $("#soundOn").hide();
     }
 }
 
@@ -136,6 +144,12 @@ function randomInteger(min, max)
 
 function updatePanels(slide)
 {
+    if(window.innerWidth >= 800)
+    {
+        achievementsShown = true;
+        upgradesShown = true;
+    }
+
     var achievPanel = $("#achievements").find(".panelTitle");
     if(!achievementsShown)
     {
@@ -181,6 +195,12 @@ function updatePanels(slide)
     }
 }
 
+function playCashSound()
+{
+    var cashSound = new Audio("sounds/cash_in.mp3");
+    cashSound.play();
+}
+
 function init()
 {
     Upgrades.build();
@@ -195,6 +215,8 @@ function init()
     $("#loadButton").click(loadGame);
 
     $("#soundSetting").click(clickSoundButton);
+    updateSoundButton();
+    $.ajax({url: "sounds/cash_in.mp3"});
 
     $("#smallProjectReward").css("line-height", $("#smallProjectProgressBar").outerHeight()+"px");
 
@@ -214,6 +236,9 @@ function init()
         upgradesShown = false;
     }
     updatePanels(false);
+    $(window).resize(function(){
+        updatePanels(false);
+    });
 
     updateCash();
     updatePower();

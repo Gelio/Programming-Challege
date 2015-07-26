@@ -2,7 +2,7 @@ var upgradesList = [
     {
         id: "upgrade-book",
         name: "Book",
-        cost: 10,
+        cost: 25,
         costMultiplier: 1.3, // amount by which cost is multiplied with each upgrade
         clickGain: 1,
         idleGain: 0,
@@ -12,7 +12,7 @@ var upgradesList = [
     {
         id: "upgrade-training",
         name: "Training",
-        cost: 25,
+        cost: 150,
         costMultiplier: 1.3, // amount by which cost is multiplied with each upgrade
         clickGain: 2,
         idleGain: 0,
@@ -22,9 +22,9 @@ var upgradesList = [
     {
         id: "upgrade-course",
         name: "Programming course",
-        cost: 100,
+        cost: 500,
         costMultiplier: 1.3,
-        clickGain: 3,
+        clickGain: 5,
         idleGain: 0,
         level: 0,
         playerLevelIncrease: 2
@@ -32,7 +32,7 @@ var upgradesList = [
     {
         id: "upgrade-coop",
         name: "Coop group",
-        cost: 50,
+        cost: 150,
         costMultiplier: 1.3,
         clickGain: 0,
         idleGain: 1,
@@ -42,7 +42,7 @@ var upgradesList = [
     {
         id: "upgrade-freelancer",
         name: "Freelancer",
-        cost: 100,
+        cost: 500,
         costMultiplier: 1.3,
         clickGain: 0,
         idleGain: 3,
@@ -52,7 +52,7 @@ var upgradesList = [
     {
         id: "upgrade-highschooler",
         name: "High-schooler",
-        cost: 200,
+        cost: 1000,
         costMultiplier: 1.3,
         clickGain: 0,
         idleGain: 7,
@@ -62,7 +62,7 @@ var upgradesList = [
     {
         id: "upgrade-college-student",
         name: "College student",
-        cost: 500,
+        cost: 2500,
         costMultiplier: 1.3,
         clickGain: 0,
         idleGain: 15,
@@ -72,7 +72,7 @@ var upgradesList = [
     {
         id: "upgrade-college-graduate",
         name: "Graduate",
-        cost: 1000,
+        cost: 8000,
         costMultiplier: 1.3,
         clickGain: 0,
         idleGain: 20,
@@ -82,7 +82,7 @@ var upgradesList = [
     {
         id: "upgrade-programmer",
         name: "Programmer",
-        cost: 1500,
+        cost: 15000,
         costMultiplier: 1.3,
         clickGain: 0,
         idleGain: 40,
@@ -92,7 +92,7 @@ var upgradesList = [
     {
         id: "upgrade-experienced",
         name: "Experienced programmer",
-        cost: 10000,
+        cost: 100000,
         costMultiplier: 1.3,
         clickGain: 0,
         idleGain: 100,
@@ -139,6 +139,12 @@ var Upgrades = {
 
     updateUpgrade: function(upgradeNumber) {
         var upgrade = document.getElementById(upgradesList[upgradeNumber].id), upgradeChildren = upgrade.childNodes;
+
+        if(canAfford(upgradesList[upgradeNumber].cost))
+            $(upgrade).addClass("affordable")
+        else
+            $(upgrade).removeClass("affordable");
+
 
         // Cost
         $(upgradeChildren[0]).text("$" + upgradesList[upgradeNumber].cost);

@@ -86,24 +86,8 @@ div.clear.right {
     user-select: none;
 }
 
-.arrow-down {
-    width: 0;
-    height: 0;
-    border-left: 10px solid transparent;
-    border-right: 10px solid transparent;
-
-    border-top: 10px solid black;
-    display: inline-block;
-}
-
-.arrow-left {
-    width: 0;
-    height: 0;
-    border-top: 10px solid transparent;
-    border-bottom: 10px solid transparent;
-
-    border-right: 10px solid black;
-    display: inline-block;
+.arrow-down, .arrow-left {
+    display: none;
 }
 
 
@@ -213,6 +197,18 @@ div.clear.right {
     overflow: auto;
     padding: 2%;
     background-color: darkgrey;
+}
+
+.affordable {
+    background-color: #215821;
+}
+
+.affordable .name {
+    color: white;
+}
+
+.affordable .effect {
+    color: red;
 }
 
 .upgrade:first-child {

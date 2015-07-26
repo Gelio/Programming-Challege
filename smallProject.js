@@ -73,7 +73,12 @@ var SmallProject = {
             this.shuffle();
 
             if(soundsEnabled)
-                document.getElementById("cash_in").play();
+            {
+                //document.getElementById("cash_in").play();
+                console.log("play");
+                //$("#cash_in").trigger("play");
+                playCashSound();
+            }
         }
         this.updateAmounts();
     },

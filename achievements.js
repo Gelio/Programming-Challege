@@ -18,7 +18,7 @@ var achievementsList = [
     {
         id: "achievement5Ppc",
         name: "5 pts/click",
-        image: "five.png",
+        image: "pointer.png",
         type: "pointsPerClick",
         goal: 5,
         completed: false
@@ -37,6 +37,46 @@ var achievementsList = [
         image: "five.png",
         type: "bigProjectsCompleted",
         goal: 5,
+        completed: false
+    },
+    {
+        id: "achievement30Projects",
+        name: "Experienced",
+        image: "programmer.png",
+        type: "projectsCompleted",
+        goal: 30,
+        completed: false
+    },
+    {
+        id: "achievement50BigProjects",
+        name: "Market leader",
+        image: "office-building.png",
+        type: "bigProjectsCompleted",
+        goal: 50,
+        completed: false
+    },
+    {
+        id: "achievementMillionaire",
+        name: "Millionaire",
+        image: "banknote.png",
+        type: "totalCash",
+        goal: 1000000,
+        completed: false
+    },
+    {
+        id: "achievementBigClick",
+        name: "Heavy clicks",
+        image: "pointer.png",
+        type: "pointsPerClick",
+        goal: 500,
+        completed: false
+    },
+    {
+        id: "achievementBoss",
+        name: "Company boss",
+        image: "office-building.png",
+        type: "pointsPerSec",
+        goal: 200,
         completed: false
     }
 ];
