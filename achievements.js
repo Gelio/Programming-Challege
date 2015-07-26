@@ -83,7 +83,6 @@ var achievementsList = [
 
 var achievementsAmount = achievementsList.length;
 
-// TODO: types: pts/click, pts/sec
 var achievementsTypes = {
     projectsCompleted: [],
     bigProjectsCompleted: [],

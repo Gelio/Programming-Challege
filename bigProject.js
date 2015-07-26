@@ -49,7 +49,7 @@ var BigProject = {
 
             if(soundsEnabled)
             {
-                console.log("play big");
+                //console.log("play big");
                 //document.getElementById("cash_in").play();
                 playCashSound();
             }

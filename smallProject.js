@@ -75,7 +75,7 @@ var SmallProject = {
             if(soundsEnabled)
             {
                 //document.getElementById("cash_in").play();
-                console.log("play");
+                //console.log("play");
                 //$("#cash_in").trigger("play");
                 playCashSound();
             }

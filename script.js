@@ -39,9 +39,10 @@ function updatePower()
 
 function saveGame()
 {
+    console.log("saving");
     var saveInfo = {
         Player: Player,
-        achievementsList: achievementsList,
+        //achievementsList: achievementsList,
         SmallProject: {
             title: SmallProject.title,
             currAmount: SmallProject.currAmount,
@@ -56,7 +57,10 @@ function saveGame()
         upgradesList: upgradesList,
         cash: cash
     };
+    console.log(saveInfo, achievementsList);
     Cookies.set("progChallengeData", JSON.stringify(saveInfo), {expires: 365});
+    Cookies.set("achievementData", JSON.stringify(achievementsList), {expires: 365});
+    console.log("save complete");
 }
 
 function loadGame()
@@ -70,7 +74,8 @@ function loadGame()
     Player = loadInfo.Player;
     updatePower();
 
-    achievementsList = loadInfo.achievementsList;
+    var achievementInfo = JSON.parse(Cookies.get("achievementData"));
+    achievementsList = achievementInfo;
     achievementsAmount = achievementsList.length;
     Achievements.updateAll();
 
