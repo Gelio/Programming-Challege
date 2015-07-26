@@ -195,10 +195,12 @@ function updatePanels(slide)
     }
 }
 
+var cashSound = new Audio("sounds/cash_in.mp3");
+
 function playCashSound()
 {
-    var cashSound = new Audio("sounds/cash_in.mp3");
-    cashSound.play();
+    localCashSound = cashSound.cloneNode();
+    localCashSound.play();
 }
 
 function init()
@@ -224,10 +226,12 @@ function init()
 
     $("#achievements").find(".panelTitle").click(function (){
         achievementsShown = !achievementsShown;
+        upgradesShown = false;
         updatePanels(true);
     });
     $("#upgrades").find(".panelTitle").click(function (){
         upgradesShown = !upgradesShown;
+        achievementsShown = false;
         updatePanels(true);
     });
     if(window.innerWidth < 800)
