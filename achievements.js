@@ -68,7 +68,7 @@ var achievementsList = [
         name: "Heavy clicks",
         image: "pointer.png",
         type: "pointsPerClick",
-        goal: 500,
+        goal: 200,
         completed: false
     },
     {
@@ -76,7 +76,7 @@ var achievementsList = [
         name: "Company boss",
         image: "office-building.png",
         type: "pointsPerSec",
-        goal: 200,
+        goal: 500,
         completed: false
     }
 ];
