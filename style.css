@@ -414,6 +414,7 @@ div.clear.right {
     margin-top: 10px;
     border-top: solid 1px;
     padding-top: 10px;
+    overflow: auto;
 
     -webkit-touch-callout: none;
     -webkit-user-select: none;
