@@ -3,7 +3,7 @@ Author: Grzegorz Rozdzialik <voreny.gelio@gmail.com>
 Configuration
 TODO: add colors to big project, more achievements, balance upgrades, rewards, targets
  */
-var autosaveTime = 5; // seconds between autosave
+var autosaveTime = 60; // seconds between autosave
 var Player = {
     clickPower: 1,
     idlePower: 0,
